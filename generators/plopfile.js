@@ -12,18 +12,50 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "../src/components/{{pascalCase name}}/index.tsx",
-        templateFile: "templates/Components.tsx.hbs",
+        path: "../src/controllers/{{camelCase name}}.controller.ts",
+        templateFile: "templates/controllers.ts.hbs",
       },
       {
         type: "add",
-        path: "../src/components/{{pascalCase name}}/stories.tsx",
-        templateFile: "templates/stories.tsx.hbs",
+        path: "../src/services/{{camelCase name}}.service.ts",
+        templateFile: "templates/services.ts.hbs",
       },
       {
         type: "add",
-        path: "../src/components/{{pascalCase name}}/styles.ts",
-        templateFile: "templates/styles.ts.hbs",
+        path: "../src/schemas/{{camelCase name}}.schema.ts",
+        templateFile: "templates/schemas.ts.hbs",
+      },
+      {
+        type: "add",
+        path: "../src/routes/{{camelCase name}}.routes.ts",
+        templateFile: "templates/routes.ts.hbs",
+      },
+      {
+        path: "../src/controllers/_index.ts",
+        pattern: /(\/\/ CONTROLLER IMPORTS)/g,
+        template:
+          "import {{pascalCase name}}Controller from './{{camelCase name}}.controller';\n$1",
+        type: "modify",
+      },
+      {
+        path: "../src/controllers/_index.ts",
+        pattern: /(\/\/ CONTROLLER EXPORTS)/g,
+        template:
+          "export const {{camelCase name}}Controller = new {{pascalCase name}}Controller();\n$1",
+        type: "modify",
+      },
+      {
+        path: "../src/routes/_index.ts",
+        pattern: /(\/\/ ROUTE IMPORTS)/g,
+        template:
+          "import * as {{pascalCase name}}Routes from './{{camelCase name}}.routes';\n$1",
+        type: "modify",
+      },
+      {
+        path: "../src/routes/_index.ts",
+        pattern: /(\/\/ ROUTE EXPORTS)/g,
+        template: "{{pascalCase name}}Routes.routes(app);\n$1",
+        type: "modify",
       },
     ], // array of actions
   });

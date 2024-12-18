@@ -1,0 +1,76 @@
+import { Router } from 'express';
+import { {{camelCase name}}Controller } from '../controllers/_index';
+import { {{camelCase name}}Schema } from '../schemas/{{camelCase name}}.schema';
+import wrapValidation from '../middlewares/validateRoutes';
+
+export function routes(app: Router) {
+  app.post(
+    '/{{camelCase name}}',
+    wrapValidation({{camelCase name}}Controller.create{{pascalCase name}}, {{camelCase name}}Schema.create),
+    () => {
+      // #swagger.tags = ["{{pascalCase name}}"]
+      /*  #swagger.parameters['{{camelCase name}}Record'] = {
+                in: 'body',
+                description: 'Create a new {{camelCase name}}.',
+                schema: {
+                  
+                 }
+        } */
+
+      /* #swagger.responses[201] = {
+            description: '{{pascalCase name}} created',
+            schema: {
+            
+                }
+        } */
+    }
+  );
+
+  app.patch(
+    '/{{camelCase name}}/:id',
+    wrapValidation({{camelCase name}}Controller.update{{pascalCase name}}, {{camelCase name}}Schema.update),
+    () => {
+      // #swagger.tags = ["{{pascalCase name}}"]
+      /*  #swagger.parameters['{{camelCase name}}Record'] = {
+                in: 'body',
+                description: 'Update a {{camelCase name}}.',
+                schema: {
+                  
+                 }
+        } */
+
+      /* #swagger.responses[200] = {
+            description: '{{pascalCase name}} updated',
+            schema: {
+                
+                }
+        } */
+    }
+  );
+
+  app.get(
+    '/{{camelCase name}}/:id',
+    wrapValidation({{camelCase name}}Controller.retrieve{{pascalCase name}}, {{camelCase name}}Schema.retrieve),
+    () => {
+      // #swagger.tags = ["{{pascalCase name}}"]
+      /* #swagger.responses[200] = {
+            description: 'Retrieve {{camelCase name}}',
+            schema: {
+                
+                }
+        } */
+    }
+  );
+
+  app.delete(
+    '/{{camelCase name}}/:id',
+    wrapValidation({{camelCase name}}Controller.delete{{pascalCase name}}, {{camelCase name}}Schema.delete),
+    () => {
+      // #swagger.tags = ["{{camelCase name}}"]
+      /* #swagger.responses[204] = {
+            description: 'Delete a {{camelCase name}}',
+            schema: ''
+        } */
+    }
+  );
+}

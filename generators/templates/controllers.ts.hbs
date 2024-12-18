@@ -1,0 +1,40 @@
+import { NextFunction, Request, Response } from 'express';
+import { {{pascalCase name}}Service } from '../services/{{camelCase name}}.service';
+
+export class {{pascalCase name}}Controller {
+  constructor(private {{camelCase name}}Service = new  {{pascalCase name}}Service()) {}
+
+  create{{pascalCase name}} = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.status(201).json('');
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  retrieve{{pascalCase name}} = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.status(200).json('Hello world');
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  update{{pascalCase name}} = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.status(200).json('');
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  delete{{pascalCase name}} = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.status(204).json('');
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+export default {{pascalCase name}}Controller;
