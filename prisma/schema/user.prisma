@@ -1,0 +1,35 @@
+model User {
+    id        Int         @id @default(autoincrement())
+    name      String
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    UserGames UserGames[]
+    Post      Post[]
+}
+
+model Post {
+    id      Int    @id @default(autoincrement())
+    title   String
+    content String
+    userId  Int
+    user    User   @relation(fields: [userId], references: [id])
+}
+
+model Game {
+    id        Int         @id @default(autoincrement())
+    name      String
+    createdAt DateTime    @default(now())
+    updatedAt DateTime    @updatedAt
+    UserGames UserGames[]
+}
+
+model UserGames {
+    userId    Int
+    gameId    Int
+    user      User     @relation(fields: [userId], references: [id])
+    game      Game     @relation(fields: [gameId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@id([userId, gameId])
+}

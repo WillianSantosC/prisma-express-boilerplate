@@ -1,0 +1,40 @@
+services:
+  postgres-db:
+    image: postgres:9.6
+    mem_limit: '6g'
+    memswap_limit: '6g'
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '3'
+    restart: always
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - .:/pgdata:/var/lib/postgresql/data
+
+  node-api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: node-notion
+    restart: on-failure
+    depends_on:
+      - postgres-db
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    command: pnpm dev
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '3'
+    env_file:
+      - .env
