@@ -7,6 +7,7 @@ import express, {
   Response,
 } from "express";
 import swaggerUi from "swagger-ui-express";
+import cors from "cors";
 
 import swaggerFile from "./swagger.json";
 import ValidationError from "./exceptions/ValidationError";
@@ -68,6 +69,9 @@ class App {
   }
 
   private setConfig() {
+    //Enables cors
+    this.app.use(cors());
+
     //Allows us to receive requests with data in json format
     this.app.use(express.json({ limit: "50mb" }));
 

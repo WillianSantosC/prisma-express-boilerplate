@@ -1,5 +1,5 @@
-import RecordController from "./record.controller";
+import UserController from "./user.controller";
 // CONTROLLER IMPORTS
 
-export const recordController = new RecordController();
+export const userController = new UserController();
 // CONTROLLER EXPORTS
