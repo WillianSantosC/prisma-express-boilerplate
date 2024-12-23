@@ -1,0 +1,10 @@
+import request from "supertest";
+
+import app from "../../app";
+
+describe("{{pascalCase name}} routes", () => {
+  test("Get one {{pascalCase name}}", async () => {
+    const res = await request(app).get("/{{camelCase name}}/1");
+    expect(res.body).toEqual("Hello world");
+  });
+});

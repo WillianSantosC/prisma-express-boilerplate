@@ -11,6 +11,7 @@ This project uses lot of stuff as:
 - [Zod](https://zod.dev)
 - [Docker](https://www.docker.com)
 - [Prisma](https://www.prisma.io)
+- [Jest](https://jestjs.io)
 
 ## Getting Started
 
@@ -35,5 +36,9 @@ Open [http://localhost:3000/doc](http://localhost:3000/doc) with your browser to
 - `dev`: runs your application on `localhost:3000`
 - `migrate`: generate your migrations`
 - `studio`: start prisma studio`
+- `generate`: generate pre configured files using plop`
 - `build`: creates the production build version
 - `swagger`: generates the swagger documentation
+- `lint`: runs the linter in all components and pages
+- `test`: runs jest to test all components and pages
+- `test:watch`: runs jest in watch mode

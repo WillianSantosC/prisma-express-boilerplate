@@ -31,6 +31,11 @@ module.exports = (plop) => {
         templateFile: "templates/routes.ts.hbs",
       },
       {
+        type: "add",
+        path: "../src/__tests__/routes/{{camelCase name}}.routes.test.ts",
+        templateFile: "templates/tests.ts.hbs",
+      },
+      {
         path: "../src/controllers/_index.ts",
         pattern: /(\/\/ CONTROLLER IMPORTS)/g,
         template:
